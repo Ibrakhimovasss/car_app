@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/screens/home_screen.dart';
 import 'package:todo_app/utils/app_colors.dart';
 import 'package:todo_app/utils/app_images.dart';
 import 'package:todo_app/widgets/custom_container2.dart';
@@ -21,6 +22,7 @@ class _CarMainScreenState extends State<CarMainScreen> {
             width: double.infinity,
             height: double.infinity,
             AppImages.car,
+            fit: BoxFit.cover,
           ),
           Positioned(
             bottom: 100,
@@ -36,6 +38,12 @@ class _CarMainScreenState extends State<CarMainScreen> {
                     textFontSize: 20,
                     width: 260,
                     borderColor: AppColors.containerColor,
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 20,

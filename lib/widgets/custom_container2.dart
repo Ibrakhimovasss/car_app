@@ -11,6 +11,8 @@ class CustomContainer extends StatelessWidget {
   final Color textColor;
   final double textFontSize;
   final Color borderColor;
+  final VoidCallback? onPressed;
+
   CustomContainer({
     Key? key,
     required this.width,
@@ -18,26 +20,30 @@ class CustomContainer extends StatelessWidget {
     required this.color,
     required this.text,
     required this.textColor,
-    required this.textFontSize, required this.borderColor,
-    
+    required this.textFontSize,
+    required this.borderColor,
+    this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(19),
-        border: Border.all(width: 2, color: borderColor),
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(19),
+          border: Border.all(width: 2, color: borderColor),
+        ),
+        child: Center(
+            child: NormalText(
+          fontSize: textFontSize,
+          text: text,
+          textColor: textColor,
+        )),
       ),
-      child: Center(
-          child: NormalText(
-        fontSize: textFontSize,
-        text: text,
-        textColor: textColor,
-      )),
     );
   }
 }
